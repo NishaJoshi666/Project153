@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <script src = 'https://aframe.io/releases/1.2.0/aframe.min.js'></script>
+        <script src = 'rotatingMap.js'></script>
+        <script src = 'diverRotating.js'></script>
+
+    </head>
+
+    <body>
+
+        <a-scene>
+
+            <a-entity id = 'camera' look-controls camera position = '0 0 20'></a-entity>
+
+            <!--assets Manager-->
+            <a-assets>
+
+                <a-asset-item id = 'terrain' src= './underWater/scene.gltf'></a-asset-item>
+                <a-asset-item id= 'scuba-diver' src = './scubaDiver/scene.gltf'></a-asset-item>
+
+            </a-assets>
+
+            <!--Terrain-->
+            <a-entity gltf-model = '#terrain' 
+            scale = '7 5 9' 
+            position = '0 -50 -50' 
+            terrain-rotation-reader 
+            animation = 'property:position ; to: 0 -30 50 ; easing:linear; loop:true; dur:25000'>
+            </a-entity>
+
+            <!--Scuba Diver-->
+            <a-entity gltf-model = '#scuba-diver' 
+            scale = '0.1 0.1 0.1' 
+            position = '0 -20 0' 
+            rotation = '0 0 0' 
+            diver-rotation-reader>
+            </a-entity>
+
+        </a-scene>
+
+    </body>
+
+</html>
